@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Data / checkpoints / large artifacts — never commit these
+*.pkl
+*.pt
+*.safetensors
+*.jsonl
+data/
+checkpoints/
+results/
+out/
+wandb/
+
+# Environment
+.env
+.venv/
+*.egg-info/
+
+# OS
+.DS_Store

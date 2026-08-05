@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning</title>
+<meta name="description" content="Project page for EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning." />
+<style>
+:root {
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --text: #162033;
+  --muted: #5f6b7a;
+  --line: #e7eaf0;
+  --accent: #3559e0;
+  --accent-2: #13a0a8;
+  --soft: #edf3ff;
+  --code: #0f172a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top left, #eef4ff 0, transparent 35%), var(--bg);
+  line-height: 1.62;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+header { padding: 64px 0 34px; text-align: center; }
+.venue {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: .02em;
+}
+h1 {
+  max-width: 980px;
+  margin: 0 auto 18px;
+  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+.subtitle {
+  max-width: 820px;
+  margin: 0 auto 20px;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+.authors, .affiliation { color: var(--muted); margin: 8px auto; }
+.authors strong { color: var(--text); font-weight: 650; }
+.buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; min-width: 118px;
+  padding: 11px 17px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--text);
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(20, 32, 54, 0.06);
+}
+.btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
+section { margin: 28px 0; }
+.card {
+  background: rgba(255,255,255,.92);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: clamp(22px, 3vw, 34px);
+  box-shadow: 0 14px 44px rgba(20, 32, 54, 0.07);
+}
+h2 { margin: 0 0 16px; font-size: 1.75rem; letter-spacing: -0.03em; }
+h3 { margin: 8px 0 8px; font-size: 1.08rem; }
+p { margin: 0 0 14px; }
+.hero-img, .figure {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: #fbfcff;
+  box-shadow: 0 8px 26px rgba(20, 32, 54, 0.06);
+}
+.placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+  padding: 24px;
+  color: var(--muted);
+  text-align: center;
+  border: 1px dashed #b7c1d6;
+  border-radius: 18px;
+  background: #fbfcff;
+}
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.step, .metric {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fbfcff;
+  padding: 18px;
+}
+.step .tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: white;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  font-size: .78rem;
+  font-weight: 800;
+}
+.metric b { display: block; font-size: 2rem; line-height: 1.1; letter-spacing: -0.04em; }
+.metric span { color: var(--muted); font-size: .92rem; }
+table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; font-size: .95rem; }
+th, td { padding: 11px 10px; border-bottom: 1px solid var(--line); text-align: center; }
+th:first-child, td:first-child { text-align: left; }
+th { background: #eef3ff; color: #26324a; }
+tr.highlight { background: #f3fbff; font-weight: 800; }
+.scroll { overflow-x: auto; }
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+pre {
+  margin: 0;
+  padding: 18px;
+  border-radius: 18px;
+  overflow-x: auto;
+  color: #dbeafe;
+  background: var(--code);
+  font-size: .92rem;
+}
+.note { color: var(--muted); font-size: .95rem; }
+.repo-tree { margin-top: 10px; }
+footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; }
+  header { padding-top: 42px; }
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="venue">ECCV 2026</div>
+  <h1>EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning</h1>
+  <p class="subtitle">A unified evidence-driven framework for industrial anomaly reasoning with multimodal large language models.</p>
+  <p class="authors">
+    <strong>Shih-Chih Lin</strong>, Ying-Heng Lu, Dong You Ye, Shang-Hong Lai
+  </p>
+  <p class="affiliation">National Tsing Hua University, Hsinchu, Taiwan</p>
+  <div class="buttons">
+    <a class="btn primary" href="paper.pdf">Paper</a>
+    <a class="btn" href="supplementary.pdf">Supplementary</a>
+    <a class="btn" href="#bibtex">BibTeX</a>
+    <a class="btn" href="#results">Results</a>
+    <a class="btn" href="https://github.com/leolin65/EGVLR-project" target="_blank" rel="noopener">Code</a>
+  </div>
+</header>
+<main class="wrap">
+  <section class="card">
+    <img class="hero-img" src="figures/EGVLR_framework_final.png" alt="Overview of the EGVLR framework" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+    <div class="placeholder" style="display:none;">
+      <div>
+        <strong>Framework figure placeholder</strong><br />
+        Put <code>figures/EGVLR_framework_final.png</code> next to this page to show the full pipeline.
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="abstract">
+    <h2>Abstract</h2>
+    <p>
+      Multimodal large language models have recently shown promise for industrial anomaly understanding, where a model is expected not only to decide whether an object is defective, but also to localize the supporting visual evidence and explain its decision. However, existing models often rely on language priors or shortcut reasoning when facing fine-grained industrial defects, causing inconsistent behaviors such as correct answers with invalid locations, hallucinated defect boxes on normal samples, or rationales that contradict the final prediction.
+    </p>
+    <p>
+      We propose <strong>EGVLR</strong>, an evidence-grounded vision--language reinforcement framework for industrial anomaly reasoning. EGVLR enforces a unified diagnostic response format that explicitly separates visual evidence, diagnostic logic, spatial location, and the final answer. The framework progressively teaches the model to attend to localized defect evidence, incorporate industrial-domain reasoning, and optimize answer--location--rationale consistency through geometry- and semantics-aware preference optimization.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Method Overview</h2>
+    <div class="grid">
+      <div class="step">
+        <span class="tag">Stage I</span>
+        <h3>PVE-FT</h3>
+        <p>Progressive visual-evidential fine-tuning teaches localized visual grounding with synthetic anomalies (CutPaste/DTD texture insertion), grid localization, local decoy verification, and normal-reference null-hypothesis calibration.</p>
+      </div>
+      <div class="step">
+        <span class="tag">Stage II</span>
+        <h3>KG-IT</h3>
+        <p>Knowledge-grounded instruction tuning injects task semantics and industrial-domain reasoning via domain QA, one-normal visual QA, and comparative inspection QA under the same EDDP schema.</p>
+      </div>
+      <div class="step">
+        <span class="tag">Stage III</span>
+        <h3>GS-DPO</h3>
+        <p>Geometry-semantic decoupled preference optimization: GRPO-style RL with a decoupled reward over format validity, answer correctness, IoU-based box matching, rationale-semantics margin, and answer--location--rationale coupling.</p>
+      </div>
+      <div class="step">
+        <span class="tag">Stage IV</span>
+        <h3>BGSR</h3>
+        <p>Box-guided segmentation rendering converts predicted boxes into dense masks via an off-the-shelf SAM-family backend for visualization, without changing answers or boxes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Evidence-Driven Diagnostic Protocol</h2>
+    <p>EGVLR uses a unified EDDP schema across trainable stages, explicitly separating evidence, reasoning logic, location, and answer.</p>
+    <pre>&lt;think&gt;
+  &lt;evidence&gt;...&lt;/evidence&gt;
+  &lt;logic&gt;...&lt;/logic&gt;
+&lt;/think&gt;
+&lt;location&gt;[[x1,y1,x2,y2], ...]&lt;/location&gt;
+&lt;answer&gt;A/B/C/D&lt;/answer&gt;</pre>
+    <p class="note">Locations use normalized 0--1000 coordinates; normal cases use an empty location list when no defect evidence is present.</p>
+  </section>
+
+  <section class="card" id="results">
+    <h2>Main MMAD Results</h2>
+    <div class="grid" style="grid-template-columns: repeat(5, 1fr);">
+      <div class="metric"><b>81.35</b><span>Average accuracy</span></div>
+      <div class="metric"><b>75.99</b><span>Defect localization</span></div>
+      <div class="metric"><b>84.98</b><span>Defect description</span></div>
+      <div class="metric"><b>88.37</b><span>Defect analysis</span></div>
+      <div class="metric"><b>99.6</b><span>EDDP format validity</span></div>
+    </div>
+    <br />
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th><th>Scale</th><th>Anomaly Discrim.</th><th>Defect Class.</th><th>Defect Local.</th><th>Defect Desc.</th><th>Defect Analysis</th><th>Object Class.</th><th>Object Analysis</th><th>Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>GPT-4o</td><td>-</td><td>68.63</td><td>65.80</td><td>55.62</td><td>73.21</td><td>83.41</td><td>94.98</td><td>82.80</td><td>74.92</td></tr>
+          <tr><td>Gemini 2.5 Pro</td><td>-</td><td>83.07</td><td>73.86</td><td>67.20</td><td>79.97</td><td>86.27</td><td>94.88</td><td>83.08</td><td>81.19</td></tr>
+          <tr><td>Qwen2.5-VL-Instruct</td><td>7B</td><td>71.39</td><td>54.35</td><td>61.17</td><td>65.81</td><td>79.32</td><td>91.44</td><td>84.43</td><td>72.56</td></tr>
+          <tr><td>LLaVA-OneVision-1.5</td><td>8B</td><td>60.85</td><td>56.29</td><td>55.25</td><td>74.73</td><td>83.21</td><td>91.03</td><td>89.14</td><td>72.93</td></tr>
+          <tr><td>Qwen3-VL-Instruct (Base)</td><td>8B</td><td>69.75</td><td>59.34</td><td>59.08</td><td>73.54</td><td>81.29</td><td>90.30</td><td>89.07</td><td>74.62</td></tr>
+          <tr><td>AnomalyR1</td><td>7B</td><td>60.93</td><td>64.81</td><td>70.72</td><td>79.06</td><td>85.52</td><td>93.12</td><td>86.91</td><td>77.29</td></tr>
+          <tr><td>OmniAD</td><td>7B</td><td>68.80</td><td>78.80</td><td>75.50</td><td>67.20</td><td>86.40</td><td>96.00</td><td>86.40</td><td>79.90</td></tr>
+          <tr><td>JUDO</td><td>7B</td><td>64.51</td><td>72.17</td><td>75.95</td><td>84.38</td><td>87.76</td><td>94.24</td><td>86.07</td><td>80.73</td></tr>
+          <tr class="highlight"><td>EGVLR (Ours)</td><td>8B</td><td>66.66</td><td>74.57</td><td>75.99</td><td>84.98</td><td>88.37</td><td>90.74</td><td>88.16</td><td>81.35</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Seven-task accuracy following the MMAD evaluation protocol; results from methods with different inference mechanisms should be interpreted with protocol differences in mind.</p>
+  </section>
+
+  <section class="card">
+    <h2>Stage Ablation</h2>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Variant</th><th>Avg. Acc.</th><th>Loc. Acc.</th><th>Format</th><th>FPR<sub>img</sub> ↓</th><th>FPBox ↓</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Base MLLM (Qwen3-VL-8B)</td><td>74.62</td><td>59.08</td><td>58.7</td><td>42.6</td><td>0.98</td></tr>
+          <tr><td>+ PVE-FT</td><td>77.84</td><td>71.90</td><td>94.6</td><td>29.4</td><td>0.67</td></tr>
+          <tr><td>+ PVE-FT + KG-IT</td><td>80.63</td><td>73.42</td><td>97.9</td><td>21.8</td><td>0.50</td></tr>
+          <tr class="highlight"><td>+ PVE-FT + KG-IT + GS-DPO</td><td>81.35</td><td>75.99</td><td>99.6</td><td>7.9</td><td>0.18</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Reward Ablation (GS-DPO)</h2>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Variant</th><th>Avg. Acc.</th><th>Loc. Acc.</th><th>Format</th><th>FPR<sub>img</sub> ↓</th><th>FPBox ↓</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Answer-only GRPO (R<sub>ans</sub>)</td><td>80.12</td><td>72.84</td><td>95.4</td><td>18.6</td><td>0.36</td></tr>
+          <tr><td>Standard GRPO (R<sub>fmt</sub>+R<sub>ans</sub>+R<sub>box</sub>)</td><td>80.74</td><td>75.12</td><td>98.8</td><td>12.8</td><td>0.25</td></tr>
+          <tr><td>w/o box reward</td><td>80.41</td><td>71.66</td><td>98.9</td><td>16.9</td><td>0.33</td></tr>
+          <tr><td>w/o semantic rationale reward</td><td>80.88</td><td>74.83</td><td>99.2</td><td>10.3</td><td>0.22</td></tr>
+          <tr><td>w/o semantic coupling reward</td><td>81.02</td><td>75.42</td><td>99.3</td><td>13.7</td><td>0.27</td></tr>
+          <tr class="highlight"><td>Full GS-DPO</td><td>81.35</td><td>75.99</td><td>99.6</td><td>7.9</td><td>0.18</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">All variants use the Qwen3-VL-8B backbone and the same KG-IT initialization.</p>
+  </section>
+
+  <section class="card">
+    <h2>Qualitative Example</h2>
+    <img class="figure" src="figures/zipper_qualitative.png" alt="Qualitative comparison on a zipper anomaly example" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+    <div class="placeholder" style="display:none;">
+      <div>
+        <strong>Qualitative figure placeholder</strong><br />
+        Put <code>figures/zipper_qualitative.png</code> next to this page to show the qualitative comparison.
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="code">
+    <h2>Code Release</h2>
+    <p>
+      The official training and evaluation code is released at
+      <a href="https://github.com/leolin65/EGVLR-project" target="_blank" rel="noopener">github.com/leolin65/EGVLR-project</a>
+      under the MIT License. It covers the full Stage I--III training pipeline, data-conversion scripts,
+      and reproducible MMAD evaluation.
+    </p>
+    <pre class="repo-tree">data_pipeline/   Stage I/II/III data conversion (synthetic + real anomaly QA,
+                 domain-knowledge QA, comparative QA, dataset merging)
+src/             Reward decomposition, GRPO trainer, SFT/GRPO training entrypoints
+scripts/         SLURM job templates for Stage I/II/III training, LoRA merging, eval
+eval/            lmms-eval task definitions for MMAD (mmad, mmad_1shot, mmad_info,
+                 mmad_train) + macro-7 scoring matching the original MMAD metric
+paper_fidelity/  Documented paper-vs-code gaps with tested (unapplied) fixes</pre>
+    <p class="note">
+      The code builds on <a href="https://github.com/2U1/Qwen-VL-Series-Finetune" target="_blank" rel="noopener">Qwen-VL-Series-Finetune</a>
+      and evaluates with <a href="https://github.com/EvolvingLMMs-Lab/lmms-eval" target="_blank" rel="noopener">lmms-eval</a>.
+      MMAD's underlying image datasets (MVTec-AD, MVTec-LOCO, VisA, GoodsAD, DS-MVTec, RealIAD, etc.) are not
+      redistributed; obtain them from the original providers and the
+      <a href="https://github.com/jam-cc/MMAD" target="_blank" rel="noopener">MMAD benchmark</a> release.
+    </p>
+  </section>
+
+  <section class="card" id="bibtex">
+    <h2>BibTeX</h2>
+    <pre>@inproceedings{lin2026egvlr,
+  title     = {EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning},
+  author    = {Lin, Shih-Chih and Lu, Ying-Heng and Ye, Dong You and Lai, Shang-Hong},
+  booktitle = {European Conference on Computer Vision},
+  year      = {2026}
+}</pre>
+    <p class="note">Update venue/year if needed before the final camera-ready release.</p>
+  </section>
+</main>
+<footer class="wrap">
+  This page is generated from the EGVLR main paper and supplementary material.
+  Code: <a href="https://github.com/leolin65/EGVLR-project" target="_blank" rel="noopener">EGVLR-project</a> (MIT License).
+</footer>
+</body>
+</html>

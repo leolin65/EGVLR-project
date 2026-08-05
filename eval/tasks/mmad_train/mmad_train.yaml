@@ -1,0 +1,37 @@
+task: mmad_train
+
+dataset_path: json
+
+dataset_kwargs:
+  data_files:
+    test: ./eval_data/mmad_eval_train.json
+
+test_split: test
+
+output_type: generate_until
+
+doc_to_visual: !function utils.mmad_doc_to_visual
+
+doc_to_text: !function utils.mmad_doc_to_text
+
+doc_to_target: "answer"
+
+generation_kwargs:
+  max_new_tokens: 8
+  temperature: 0
+  top_p: 1.0
+  do_sample: false
+
+process_results: !function utils.mmad_process_results
+
+metric_list:
+  - metric: acc
+    aggregation: !function utils.mmad_aggregate
+    higher_is_better: true
+
+lmms_eval_specific_kwargs:
+  default:
+    post_prompt: "\nAnswer with only the option letter."
+
+metadata:
+  - version: 0.0

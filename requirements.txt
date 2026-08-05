@@ -1,0 +1,31 @@
+# Core dependencies for training/eval. Install into the same environment as your
+# Qwen-VL-Series-Finetune checkout (https://github.com/2U1/Qwen-VL-Series-Finetune) --
+# these versions are what EGVLR was actually developed and run against.
+torch==2.8.0
+torchvision==0.23.0
+transformers==5.3.0
+trl==0.25.0
+peft==0.15.2
+deepspeed==0.17.5
+accelerate==1.10.1
+liger_kernel==0.8.0
+datasets==3.5.1
+safetensors==0.6.2
+sentencepiece
+tokenizers==0.22.2
+huggingface-hub==1.6.0
+opencv-python==4.11.0.86
+pillow==11.3.0
+numpy==2.1.2
+scipy==1.16.2
+scikit-learn==1.7.2
+
+# reference_banks.py (paper_fidelity/) additionally needs a sentence embedding model:
+sentence-transformers
+
+# eval/ (lmms-eval task definitions) depends on lmms-eval itself:
+# pip install lmms-eval  (or your own fork/checkout)
+
+# wandb / tensorboardX are optional, only needed if --report_to wandb/tensorboard is used
+wandb==0.19.10
+tensorboardX==2.6.2.2
