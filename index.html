@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning</title>
-<meta name="description" content="Project page for EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning." />
+<title>EGVLR: Evidence-Grounded Vision–Language Reinforcement for Anomaly Reasoning</title>
+<meta name="description" content="Project page for EGVLR: Evidence-Grounded Vision–Language Reinforcement for Anomaly Reasoning." />
 <style>
 :root {
   --bg: #f7f8fb;
@@ -145,18 +145,21 @@ footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
 </head>
 <body>
 <header class="wrap">
-  <div class="venue">ECCV 2026</div>
-  <h1>EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning</h1>
-  <p class="subtitle">A unified evidence-driven framework for industrial anomaly reasoning with multimodal large language models.</p>
+  <div class="venue">ECCV 2026 · Malmö · Poster Sat 12 Sep, 15:00–17:00 CEST, ExHall #185</div>
+  <h1>EGVLR: Evidence-Grounded Vision–Language Reinforcement for Anomaly Reasoning</h1>
+  <p class="subtitle">Industrial Anomaly Reasoning · Multimodal Large Language Models · Visual Grounding · Reinforcement Learning</p>
   <p class="authors">
     <strong>Shih-Chih Lin</strong>, Ying-Heng Lu, Dong You Ye, Shang-Hong Lai
   </p>
   <p class="affiliation">National Tsing Hua University, Hsinchu, Taiwan</p>
   <div class="buttons">
-    <a class="btn primary" href="paper.pdf">Paper</a>
+    <a class="btn primary" href="https://www.researchgate.net/publication/414113761" target="_blank" rel="noopener">Paper</a>
     <a class="btn" href="supplementary.pdf">Supplementary</a>
     <a class="btn" href="#bibtex">BibTeX</a>
     <a class="btn" href="#results">Results</a>
+    <a class="btn" href="https://youtu.be/dVETt3_o-gU" target="_blank" rel="noopener">Video</a>
+    <a class="btn" href="https://doi.org/10.1007/978-3-032-37094-5_11" target="_blank" rel="noopener">DOI</a>
+    <a class="btn" href="https://eccv.ecva.net/virtual/2026/poster/4683" target="_blank" rel="noopener">ECCV page</a>
     <a class="btn" href="https://github.com/leolin65/EGVLR-project" target="_blank" rel="noopener">Code</a>
   </div>
 </header>
@@ -174,10 +177,10 @@ footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
   <section class="card" id="abstract">
     <h2>Abstract</h2>
     <p>
-      Multimodal large language models have recently shown promise for industrial anomaly understanding, where a model is expected not only to decide whether an object is defective, but also to localize the supporting visual evidence and explain its decision. However, existing models often rely on language priors or shortcut reasoning when facing fine-grained industrial defects, causing inconsistent behaviors such as correct answers with invalid locations, hallucinated defect boxes on normal samples, or rationales that contradict the final prediction.
+      Multimodal large language models have recently shown promise for industrial anomaly understanding, where a model is expected not only to decide whether an object is defective, but also to localize the supporting visual evidence and explain its decision. However, existing models often rely on language priors or shortcut reasoning when facing fine-grained industrial defects. This leads to inconsistent behaviors, such as correct answers with invalid locations, hallucinated defect boxes on normal samples, or rationales that contradict the final prediction.
     </p>
     <p>
-      We propose <strong>EGVLR</strong>, an evidence-grounded vision--language reinforcement framework for industrial anomaly reasoning. EGVLR enforces a unified diagnostic response format that explicitly separates visual evidence, diagnostic logic, spatial location, and the final answer. The framework progressively teaches the model to attend to localized defect evidence, incorporate industrial-domain reasoning, and optimize answer--location--rationale consistency through geometry- and semantics-aware preference optimization.
+      We propose <strong>EGVLR</strong>, an evidence-grounded vision–language reinforcement framework for industrial anomaly reasoning. EGVLR enforces a unified diagnostic response format that explicitly separates visual evidence, diagnostic logic, spatial location, and the final answer. The framework progressively teaches the model to attend to localized defect evidence, incorporate industrial-domain reasoning, and optimize answer–location–rationale consistency through geometry- and semantics-aware preference optimization. For visualization, predicted boxes can be further converted into dense masks using an off-the-shelf segmentation backend. Experiments on MMAD show that EGVLR improves evidence-grounded anomaly reasoning, with consistent gains in defect localization, reasoning-dependent question answering, and spatial false-positive control. These results suggest that explicitly coupling answers, locations, and rationales is important for reliable industrial anomaly understanding.
     </p>
   </section>
 
@@ -187,22 +190,22 @@ footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
       <div class="step">
         <span class="tag">Stage I</span>
         <h3>PVE-FT</h3>
-        <p>Progressive visual-evidential fine-tuning teaches localized visual grounding with synthetic anomalies (CutPaste/DTD texture insertion), grid localization, local decoy verification, and normal-reference null-hypothesis calibration.</p>
+        <p>Progressive Visual-Evidential Fine-Tuning trains visual evidence grounding with synthetic localized anomalies (CutPaste-style patch replacement or DTD texture insertion), 3 × 3 grid supervision, local verification decoys, and null-hypothesis calibration — before any domain knowledge is introduced.</p>
       </div>
       <div class="step">
         <span class="tag">Stage II</span>
         <h3>KG-IT</h3>
-        <p>Knowledge-grounded instruction tuning injects task semantics and industrial-domain reasoning via domain QA, one-normal visual QA, and comparative inspection QA under the same EDDP schema.</p>
+        <p>Knowledge-Grounded Instruction Tuning teaches industrial-domain QA behavior using domain questions, one-normal visual QA, and comparative inspection QA while preserving the EDDP schema.</p>
       </div>
       <div class="step">
         <span class="tag">Stage III</span>
         <h3>GS-DPO</h3>
-        <p>Geometry-semantic decoupled preference optimization: GRPO-style RL with a decoupled reward over format validity, answer correctness, IoU-based box matching, rationale-semantics margin, and answer--location--rationale coupling.</p>
+        <p>Geometry-Semantic Decoupled Preference Optimization refines the KG-IT model with a GRPO-style objective and separately rewards format validity, answer correctness, box geometry, sentence-embedding-based rationale semantics, and answer–location–rationale coupling.</p>
       </div>
       <div class="step">
         <span class="tag">Stage IV</span>
         <h3>BGSR</h3>
-        <p>Box-guided segmentation rendering converts predicted boxes into dense masks via an off-the-shelf SAM-family backend for visualization, without changing answers or boxes.</p>
+        <p>Box-Guided Segmentation Rendering maps predicted boxes to dense masks using an external segmentation backend; it is a rendering step and does not change the MLLM answer.</p>
       </div>
     </div>
   </section>
@@ -216,7 +219,7 @@ footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
 &lt;/think&gt;
 &lt;location&gt;[[x1,y1,x2,y2], ...]&lt;/location&gt;
 &lt;answer&gt;A/B/C/D&lt;/answer&gt;</pre>
-    <p class="note">Locations use normalized 0--1000 coordinates; normal cases use an empty location list when no defect evidence is present.</p>
+    <p class="note">Each box is represented as [x1, y1, x2, y2] in the [0, 1000] coordinate system. For normal, negative-region, or non-spatial QA samples, the correct location is the empty list.</p>
   </section>
 
   <section class="card" id="results">
@@ -260,7 +263,7 @@ footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
           <tr><th>Variant</th><th>Avg. Acc.</th><th>Loc. Acc.</th><th>Format</th><th>FPR<sub>img</sub> ↓</th><th>FPBox ↓</th></tr>
         </thead>
         <tbody>
-          <tr><td>Base MLLM (Qwen3-VL-8B)</td><td>74.62</td><td>59.08</td><td>58.7</td><td>42.6</td><td>0.98</td></tr>
+          <tr><td>Base MLLM</td><td>74.62</td><td>59.08</td><td>58.7</td><td>42.6</td><td>0.98</td></tr>
           <tr><td>+ PVE-FT</td><td>77.84</td><td>71.90</td><td>94.6</td><td>29.4</td><td>0.67</td></tr>
           <tr><td>+ PVE-FT + KG-IT</td><td>80.63</td><td>73.42</td><td>97.9</td><td>21.8</td><td>0.50</td></tr>
           <tr class="highlight"><td>+ PVE-FT + KG-IT + GS-DPO</td><td>81.35</td><td>75.99</td><td>99.6</td><td>7.9</td><td>0.18</td></tr>
@@ -292,6 +295,7 @@ footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
   <section class="card">
     <h2>Qualitative Example</h2>
     <img class="figure" src="figures/zipper_qualitative.png" alt="Qualitative comparison on a zipper anomaly example" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+    <p class="note">Qualitative comparison on a zipper anomaly example. The visual pair contains a normal reference and a query image whose teeth are pushed closer together. Baselines produce plausible but weakly grounded defect descriptions, whereas EGVLR follows the unified EDDP schema, localizes the multi-instance defect with EDDP normalized 0–1000 boxes, and predicts the correct answer.</p>
     <div class="placeholder" style="display:none;">
       <div>
         <strong>Qualitative figure placeholder</strong><br />
@@ -305,7 +309,7 @@ footer { color: var(--muted); text-align: center; padding: 34px 0 58px; }
     <p>
       The official training and evaluation code is released at
       <a href="https://github.com/leolin65/EGVLR-project" target="_blank" rel="noopener">github.com/leolin65/EGVLR-project</a>
-      under the MIT License. It covers the full Stage I--III training pipeline, data-conversion scripts,
+      under the MIT License. It covers the full Stage I–III training pipeline, data-conversion scripts,
       and reproducible MMAD evaluation.
     </p>
     <pre class="repo-tree">data_pipeline/   Stage I/II/III data conversion (synthetic + real anomaly QA,
@@ -324,15 +328,24 @@ paper_fidelity/  Documented paper-vs-code gaps with tested (unapplied) fixes</pr
     </p>
   </section>
 
+  <section class="card">
+    <h2>Acknowledgements</h2>
+    <p>This work was supported in part by the National Science and Technology Council, Taiwan, under grant NSTC 115-2634-F-007-003.</p>
+  </section>
+
   <section class="card" id="bibtex">
     <h2>BibTeX</h2>
     <pre>@inproceedings{lin2026egvlr,
-  title     = {EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning},
+  title     = {EGVLR: Evidence-Grounded Vision&#45;&#45;Language Reinforcement for Anomaly Reasoning},
   author    = {Lin, Shih-Chih and Lu, Ying-Heng and Ye, Dong You and Lai, Shang-Hong},
-  booktitle = {European Conference on Computer Vision},
-  year      = {2026}
+  booktitle = {Computer Vision &#45;&#45; ECCV 2026},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {17061},
+  publisher = {Springer},
+  year      = {2026},
+  doi       = {10.1007/978-3-032-37094-5_11}
 }</pre>
-    <p class="note">Update venue/year if needed before the final camera-ready release.</p>
+    <p class="note">Published in <em>Computer Vision – ECCV 2026</em>, LNCS vol. 17061, Springer.</p>
   </section>
 </main>
 <footer class="wrap">

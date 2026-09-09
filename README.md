@@ -3,7 +3,14 @@
 Official code for **EGVLR** (ECCV 2026), a four-stage vision-language reinforcement framework for
 industrial anomaly reasoning on [MMAD](https://arxiv.org/abs/2410.09453) (Jiang et al., ICLR 2025).
 
-[Project page](https://leolin65.github.io/EGVLR-project/) · [Paper (PDF)](https://leolin65.github.io/EGVLR-project/paper.pdf) · [Supplementary (PDF)](https://leolin65.github.io/EGVLR-project/supplementary.pdf)
+[![ECCV 2026](https://img.shields.io/badge/ECCV-2026-6D2E91)](https://eccv.ecva.net/virtual/2026/poster/4683)
+[![DOI](https://img.shields.io/badge/DOI-10.1007%2F978--3--032--37094--5__11-blue)](https://doi.org/10.1007/978-3-032-37094-5_11)
+[![Video](https://img.shields.io/badge/Video-5--min%20talk-red?logo=youtube)](https://youtu.be/dVETt3_o-gU)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+[Project page](https://leolin65.github.io/EGVLR-project/) · [Paper (PDF)](https://www.researchgate.net/publication/414113761) · [Supplementary (PDF)](https://leolin65.github.io/EGVLR-project/supplementary.pdf) · [ECCV page](https://eccv.ecva.net/virtual/2026/poster/4683) · [Video](https://youtu.be/dVETt3_o-gU)
+
+> **Poster session:** Saturday 12 September 2026, 15:00–17:00 CEST, ExHall #185, Malmö Arena.
 
 ## Overview
 
@@ -26,7 +33,7 @@ second = normal reference image.
 |---|---|---|
 | I | **PVE-FT** (Progressive Visual-Evidential Fine-Tuning) | Teaches localized visual grounding using synthetic anomalies (CutPaste/DTD texture insertion), grid localization, local decoy verification, and normal-reference null-hypothesis calibration — before any domain knowledge is introduced. Plain autoregressive CE loss. |
 | II | **KG-IT** (Knowledge-Grounded Instruction Tuning) | Injects task semantics and domain knowledge via domain QA, one-normal visual QA, and comparative inspection QA, under the same EDDP schema. Plain autoregressive CE loss. |
-| III | **GS-DPO** (Geometry-Semantic Decoupled Preference Optimization) | GRPO-style RL refinement with a decoupled reward: `R = λ_f R_fmt + λ_a R_ans + λ_b R_box + λ_r R_sem + λ_c R_cpl` — format validity, answer correctness, IoU-based box matching (with a redundant-box penalty), sentence-embedding-based rationale-semantics margin (against three fixed reference banks: normal-supporting, abnormal-supporting, domain-oriented), and an answer–location–rationale coupling term. See `main.tex` Eq. 1–9 for the full derivation. |
+| III | **GS-DPO** (Geometry-Semantic Decoupled Preference Optimization) | GRPO-style RL refinement with a decoupled reward: `R = λ_f R_fmt + λ_a R_ans + λ_b R_box + λ_r R_sem + λ_c R_cpl` — format validity, answer correctness, IoU-based box matching (with a redundant-box penalty), sentence-embedding-based rationale-semantics margin (against three fixed reference banks: normal-supporting, abnormal-supporting, domain-oriented), and an answer–location–rationale coupling term. See paper Eq. 7–10 for the full derivation. |
 | IV | **BGSR** (Box-Guided Segmentation Rendering) | Non-trainable: converts predicted boxes into dense masks via an off-the-shelf SAM-family segmentation backend. Does not modify the MLLM's answer or boxes. |
 
 ## Repository structure
@@ -94,12 +101,18 @@ MMAD's underlying image data (MVTec-AD, MVTec-LOCO, VisA, GoodsAD, DS-MVTec, Rea
 
 ## Citation
 
+Published in *Computer Vision – ECCV 2026*, LNCS vol. 17061, Springer. DOI: [10.1007/978-3-032-37094-5_11](https://doi.org/10.1007/978-3-032-37094-5_11)
+
 ```bibtex
 @inproceedings{lin2026egvlr,
   title     = {EGVLR: Evidence-Grounded Vision--Language Reinforcement for Anomaly Reasoning},
   author    = {Lin, Shih-Chih and Lu, Ying-Heng and Ye, Dong You and Lai, Shang-Hong},
-  booktitle = {European Conference on Computer Vision (ECCV)},
-  year      = {2026}
+  booktitle = {Computer Vision -- ECCV 2026},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {17061},
+  publisher = {Springer},
+  year      = {2026},
+  doi       = {10.1007/978-3-032-37094-5_11}
 }
 ```
 
